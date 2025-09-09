@@ -1,0 +1,116 @@
+/* Base + container */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+body{font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#333}
+img{max-width:100%;height:auto;display:block}
+
+.container{width:min(100% - 2rem, 72rem);margin-inline:auto}
+
+/* Page-level GRID using template areas */
+.page{
+  min-height:100svh;
+  display:grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows:auto 1fr auto;
+  gap:2rem; /* vertical rhythm between header/main/footer */
+}
+.page__header{grid-area:header}
+.page__main{grid-area:main}
+.page__footer{grid-area:footer}
+
+/* Header: flex (logo left, links right; wraps on small) */
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding-block:0.75rem;
+}
+.nav__list{
+  list-style:none;
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;              /* wraps on small devices */
+}
+.nav__list a{text-decoration:none}
+
+/* Hero: stack on mobile; side-by-side later */
+.hero{
+  display:grid;
+  gap:1rem;
+}
+.hero__cta{display:flex; gap:.75rem; flex-wrap:wrap}
+
+/* Features: title + 3 stacked cards on mobile; 3-up later */
+.features{
+  display:grid;
+  gap:1rem;
+}
+.feature{
+  display:flex;
+  flex-direction:column;     /* emoji top → h3 → p */
+  align-items:center;
+  text-align:center;
+  padding:1rem;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:.75rem;
+}
+.feature__icon{font-size:2rem; margin-bottom:.4rem}
+
+/* About: stack text then image on mobile */
+.about{
+  display:grid;
+  gap:1rem;
+}
+.stats{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr)); /* 2-up on mobile so 3rd wraps */
+  gap:.75rem;
+  margin-top:1rem;
+}
+.stat{text-align:center}
+.stat__value{display:block; font-size:1.75rem; font-weight:700; line-height:1.1}
+
+/* Footer: 1 col on mobile */
+.footer__inner{
+  display:grid;
+  gap:1rem;
+  padding-block:1rem;
+}
+
+/* ===================== */
+/*   Breakpoints         */
+/* ===================== */
+@media (min-width: 768px){
+  /* page areas stay the same, but sections get wider layouts */
+
+  .hero{
+    grid-template-columns: 1.1fr .9fr; /* text | image */
+    align-items:center;
+  }
+
+  .features{
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+
+  .about{
+    grid-template-columns: 1.1fr .9fr; /* text | image */
+    align-items:center;
+  }
+
+  .stats{
+    grid-template-columns: repeat(3, minmax(0,1fr)); /* 3-up on tablet+ */
+  }
+
+  .footer__inner{
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+@media (min-width: 1024px){
+  /* Optional desktop refinements */
+  .header__inner{padding-block:1rem}
+}

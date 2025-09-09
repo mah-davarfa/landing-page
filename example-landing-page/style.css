@@ -1,0 +1,334 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+body p{
+    font-size: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+}
+.container-grid{
+    width: min(100% - 2rem, 72rem);
+    margin-inline: auto;
+    padding: 0.5rem;
+    border:5px solid red;
+    margin: 0.5rem;
+}
+
+
+ /* mobile-first */
+
+
+img {
+  display: block;                          /* remove inline gaps */
+  width: 100%;                             /* allow shrinking with container */
+  max-width: clamp(150px, 70vw, 400px);    /* min 150px, fluid, cap ~400px */
+  height: auto;                             /* keep aspect ratio */
+  margin-inline: auto;                      /* center horizontally */
+                   
+} 
+
+.container-grid{
+    display:grid;
+    grid-template-areas: 
+    "top-menu"
+   "hero-section"
+    'features-section'
+    "about-section"
+    "footer-section";
+    grid-template-rows: repeat(5,auto);
+    gap: 2rem;
+}
+.top-menu{grid-area:top-menu;}
+.hero-section{grid-area:hero-section;}
+.features-section{grid-area:features-section;}
+.about-section{grid-area:about-section;}
+.footer-section{grid-area:footer-section;}  
+
+/* from small up to 1024px this is style after that side by side gap between*/
+.top-menu{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+    padding-block: 1rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+}
+.nav-list{
+    list-style:none;
+    display:flex;
+    gap:1rem;
+   
+}
+.nav-list a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* up to 1024px after that pic and text container side by side */
+.hero-section{
+    display:grid;
+    gap:1rem;
+    
+}
+.btn-a{
+    display: inline-block;
+    
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    
+    margin:1rem;
+   
+}
+.hero-a .btn-a:last-child{
+    background-color: #fff;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+}
+.btn-a {
+  /* Fluid font size and padding that shrink on small screens, grow on large */
+  font-size: clamp(0.85rem, 0.6rem + 0.6vw, 1rem);
+  padding: clamp(0.5rem, 0.3rem + 1vw, 0.75rem)
+           clamp(0.9rem, 0.6rem + 1.2vw, 1.5rem);
+  line-height: 1.1;            /* tighter lines to avoid tall buttons */
+  border-radius: 6px;
+}
+
+.hero-a{
+    display:flex;
+    gap:0.75rem;
+    justify-content: center;
+    font-size: clamp(0.8rem, 0.7rem + 0.3vw, 0.95rem);
+}
+.hero-text{
+    display:grid;
+    gap:1rem;
+   text-align: center;
+}
+.hero-text h1,
+.hero-text p {
+  text-align: left;
+}
+
+.about-HP p {
+  text-align: left;
+}
+/* tablet  h2 on top the 2 article side by side 3rd one left right/ biger than tablet h on top 3 article side by side*/
+.features-section{
+    display:grid;
+    gap:1rem;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:0.75rem;
+    background-color: rgba(0,0,0,.065);
+    padding: 2rem;
+    margin: 3rem 0;
+}
+#features{
+    text-align: center;
+    margin:1rem;
+}
+
+.feature-article{
+    display  :flex;
+    flex-direction: column;
+    align-items: center;
+    gap:1rem;
+    border:1px solid rgba(0,0,0,.1);
+    border-radius:0.75rem;
+    background-color: #fff;
+    padding: 1rem;
+}
+.feature-article span{
+    font-size:2rem; margin-bottom:.4rem
+}
+
+/*  desktop about-text left and img on right */
+.about-section{
+  display: grid;
+  gap: 1rem;
+}
+.about-HP{
+    text-align:center ;
+    margin-bottom: 1rem;
+}
+.about-text span { display:block; font-size:1rem; font-weight:700; color:#007BFF }
+/* MOBILE: h2+p on top; then 2-up stats so the 3rd wraps */
+.bout-numbers{
+  display: grid;
+  gap: 1rem;
+  
+  grid-template-areas:
+    "about-500 about-98"
+    "about-24 .";
+}
+
+
+.about-500 { grid-area: about-500; text-align:center; }
+.about-98  { grid-area: about-98;  text-align:center; }
+.about-24  { grid-area: about-24;  text-align:center; }
+
+
+.footer-section{
+    display:grid;
+    background-color: #020e18;
+    color:#ccc;
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+.footer-section h4{
+ margin-bottom:0.8rem;
+}
+.footer-section p{
+ font-size: 0.7rem;
+}
+/* tablet int and link side by side contact below left side, desktop all 3 side by side  */
+.footer-grid{
+    display: grid;
+    gap:1rem;
+}
+.footer-date{
+    border-top:1px solid rgba(223, 212, 212, 0.404);
+    text-align: center;
+    margin-top:1rem;
+}
+.nav-list-f a {
+gap:1rem;
+font-size: 0.6rem;
+text-decoration: none;
+color:antiquewhite;
+}
+.nav-list-f {
+  list-style: none;    
+}
+
+
+.footer-link{
+    display: grid;
+    gap:0.2rem;
+    margin:1rem 0;
+}
+.footer-contact p,
+.footer-contact a { 
+    color:antiquewhite;
+    font-size: 0.6rem;
+    text-decoration: none;
+}
+.footer-int h4{
+    color:#007BFF
+}
+
+/* animations  */
+/* Hover effects for feature cards and hero buttons */
+.solutions,
+.lightning,
+.secure,
+.btn-a {
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hovers */
+.solutions:hover,
+.lightning:hover,
+.secure:hover {
+  background-color: #f0f8ff;           
+  transform: translateY(-5px);        
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-a:hover {
+  background-color: #0056b3;          
+  color: #fff;                        
+  transform: translateY(-5px);        
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* tablet size */
+@media (min-width:768px){
+
+  .features-section{
+    display: grid;
+    grid-template-areas: 
+    "features features"
+    "solutions lightning"
+    "secure . ";
+  }
+  .features{grid-area: features;}
+  .solutions{grid-area:solutions;}
+  .lightning{grid-area:lightning;}
+  .secure{grid-area:secure;}
+  .features{text-align: center;}
+  
+  .bout-numbers{
+  display: grid;
+  grid-template-areas: 
+  "about-500 about-98 about-24 "
+  }
+
+ .about-img{
+    width: min(100%, 520px);  /* can fill its column up to 520px */
+    margin-inline: 0;         /* align to the left edge */
+    justify-self: start;      /* grid alignment: push left */
+    
+  }
+ .footer-grid{
+    grid-template-areas: 
+    "footer-int footer-link"
+    "footer-contact .";
+ }
+ .footer-int{grid-area: footer-int;}
+ .footer-link{grid-area: footer-link;}
+ .footer-contact{grid-area: footer-contact;} 
+}
+@media (min-width:1024px){
+.top-menu{
+    text-align: center;
+    display:flex;
+    justify-content:space-between;
+    padding-block: 1rem;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.hero-section{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "hero-text hero-pic ";
+}
+.hero-text{grid-area:hero-text;}
+.hero-pic{grid-area: hero-pic;}
+
+.features-section{
+    display: grid;
+    grid-template-areas: 
+    "features features features"
+    "solutions lightning secure";
+    }
+.about-section{
+    grid-template-columns: 1fr 1fr 1fr;
+    display:grid;
+     grid-template-areas: 
+     "about-text about-text about-img";
+}    
+.about-img{grid-area: about-img;}
+.about-text{grid-area: about-text;}
+.about-section{
+    margin: 0 3rem;
+}
+.about-text{margin-right: 3rem;}
+.hero-a {
+    justify-content: flex-start; /* left-align the button row on desktop */
+  }
+}
